@@ -28,15 +28,18 @@ Unit tests:
 -bin/phpunit
 
 To receive token:
+
 POST localhost/oauth/v2/token
 with header: Content-Type: application/json
+
     {
         "grant_type": "password",
-        "client_id": "'<public_id>'",
-        "client_secret": "'<secret>'",
-        "username": "'<your username>'",
-        "password": "'<your passowrd>'"
+        "client_id": "public_id",
+        "client_secret": "secret",
+        "username": "your username",
+        "password": "your passowrd"
     }
+
 Then you receive token.
 To future comunication you should use authentication "Bearer token" and received token.
 

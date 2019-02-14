@@ -4,7 +4,7 @@
 User and password to database are committed to Github which is of course against all security rules but it is only an example project so I assumed that this is the easiest way.
 
 Project is created in Symfony 3 with Docker.
-Unit test includes only basic cases and there are no tests for authenticated user.
+I think, that, in this case, beter then unit tests are functional tests so I added some basic functional tests and there are no tests for authenticated user.
 
 ### Instalation guide:
 
@@ -24,8 +24,15 @@ You should receive information about new client.
 IMPORTANT: save public_id and secret for this client.
 - bin/console fos:user:create
 
-Unit tests:
+Tests (before run the tests you should add some data to db, instruction below):
 -bin/phpunit
+
+To load data to db:
+- you must exit the php container (exit)
+- docker cp ./data.sql sf3_mysql:/
+- docker exec sf3_mysql /bin/sh -c 'mysql -u sf3 -psf3 < /data.sql'
+
+There is no SQL for users because users must be add according to above instruction.
 
 To receive token:
 

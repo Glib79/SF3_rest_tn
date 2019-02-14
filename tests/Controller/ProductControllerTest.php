@@ -52,26 +52,16 @@ class ProductControllerTest extends TestCase
     {
         $response = $this->http->request('GET', '/api/products/1', ['http_errors' => false]);
 
-        if($response->getStatusCode() == 200)
-        {
-            #Response without authentication
-            $this->assertEquals(200, $response->getStatusCode());
+        #Response without authentication
+        $this->assertEquals(200, $response->getStatusCode());
 
-            #What we rceived
-            $contentType = $response->getHeaders()["Content-Type"][0];
-            $this->assertEquals("application/json", $contentType);
+        #What we rceived
+        $contentType = $response->getHeaders()["Content-Type"][0];
+        $this->assertEquals("application/json", $contentType);
 
-            #Check for received data
-            $id = json_decode($response->getBody());
-            $this->assertRegexp('/"id":1/', $id);
-        }else{
-            #Response without authentication
-            $this->assertEquals(404, $response->getStatusCode());
-
-            #What we rceived
-            $contentType = $response->getHeaders()["Content-Type"][0];
-            $this->assertEquals("application/json", $contentType);
-        }
+        #Check for received data
+        $id = json_decode($response->getBody());
+        $this->assertRegexp('/"id":1/', $id);
     }
 
     public function testGetProducts()
